@@ -3,6 +3,7 @@ using Project.Configs;
 using Project.Extensions;
 using Project.Services.AppProcessor;
 using Project.Services.FilePathsLoader;
+using Project.Services.FileStreamer;
 
 try
 {
@@ -18,6 +19,7 @@ try
     });
     
     services.AddTransient<IFilePathsLoader, FilePathsLoader>();
+    services.AddTransient<IFileStreamer, FileStreamer>();
     services.AddSingleton<AppProcessor>();
     
     var serviceProvider = services.BuildServiceProvider();
