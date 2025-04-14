@@ -5,9 +5,24 @@ public class FileStreamerTests
     [Fact]
     public void Test_ShouldChangeLinesInFile()
     {
+        var fileStreamer = new Project.Services.FileStreamer.FileStreamer();
+        SimpleFileChangeTest(fileStreamer);
+    }
+    
+    [Fact]
+    public void Test_ShouldChangeLinesInMultipleFile()
+    {
+        var fileStreamer = new Project.Services.FileStreamer.FileStreamer();
+        SimpleFileChangeTest(fileStreamer);
+        SimpleFileChangeTest(fileStreamer);
+        SimpleFileChangeTest(fileStreamer);
+    }
+    
+    private void SimpleFileChangeTest(Project.Services.FileStreamer.FileStreamer fileStreamer)
+    {
         var sourceFileContent = "Test line 1\nTest line 2\nTest line 3\nTest line 4\nTest line 5\nTest line 6";
         var targetFileContent = "Test line 1\nChanged line 1\nTest line 3\nChanged line 2\nTest line 5\nChanged line 3";
-        
+
         var tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
         var filePath = Path.Combine(tempDir, "test.txt");
 
@@ -16,7 +31,6 @@ public class FileStreamerTests
             Directory.CreateDirectory(tempDir);
             File.WriteAllText(filePath, sourceFileContent);
 
-            var fileStreamer = new Project.Services.FileStreamer.FileStreamer();
             fileStreamer.OpenFile(filePath);
 
             fileStreamer.GetLine(out var line1);
