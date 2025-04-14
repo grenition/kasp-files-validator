@@ -34,7 +34,7 @@ namespace Project.Services.FileStreamer
             _isOpen = true;
         }
 
-        public bool GetLine(out string line)
+        public bool GetLine(out string? line)
         {
             if (!_isOpen)
                 throw new InvalidOperationException("File is not opened.");
@@ -61,7 +61,7 @@ namespace Project.Services.FileStreamer
             return true;
         }
 
-        public void ModifyPreviousLine(string newValue)
+        public void ModifyPreviousLine(string? newValue)
         {
             if (!_isOpen)
                 throw new InvalidOperationException("File is not opened.");

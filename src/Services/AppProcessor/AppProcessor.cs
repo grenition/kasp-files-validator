@@ -24,7 +24,7 @@ public class AppProcessor(
         {
             fileStreamer.OpenFile(path);
 
-            while (fileStreamer.GetLine(out string line))
+            while (fileStreamer.GetLine(out string? line))
             {
                 if (lineValidator.IsBadLine(line, out var correctLine))
                     fileStreamer.ModifyPreviousLine(correctLine);

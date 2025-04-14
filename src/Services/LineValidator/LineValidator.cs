@@ -8,16 +8,16 @@ namespace Project.Services.LineValidator
     {
         private readonly AppConfig _config = config.Value;
         
-        public bool IsBadLine(string line, out string correctLine)
+        public bool IsBadLine(string? line, out string? correctLine)
         {
             correctLine = line;
             var isChanged = false;
 
             if (_config.RegexMasks != null)
                 foreach (var mask in _config.RegexMasks)
-                    if (Regex.IsMatch(correctLine, $"^{mask.Pattern}$"))
+                    if (Regex.IsMatch(correctLine!, $"^{mask.Pattern}$"))
                     {
-                        correctLine = Regex.Replace(correctLine, $"^{mask.Pattern}$", mask.Replacement);
+                        correctLine = Regex.Replace(correctLine!, $"^{mask.Pattern}$", mask.Replacement!);
                         isChanged = true;
                     }
 

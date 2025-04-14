@@ -2,14 +2,14 @@ namespace Project.Configs
 {
     public class RegexMask
     {
-        public string Pattern { get; set; } = null!;
-        public string Replacement { get; set; } = null!;
+        public string? Pattern { get; set; }
+        public string? Replacement { get; set; } 
     }
 
     public class BannedWord
     {
-        public string Word { get; set; } = null!;
-        public string Replacement { get; set; } = null!;
+        public string? Word { get; set; } 
+        public string? Replacement { get; set; } 
     }
 
     public class AppConfig
