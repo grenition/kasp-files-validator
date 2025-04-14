@@ -1,0 +1,2 @@
+AppConfig:
+  ExtensionFilter: "*.log"
