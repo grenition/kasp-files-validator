@@ -4,6 +4,7 @@ using Project.Extensions;
 using Project.Services.AppProcessor;
 using Project.Services.FilePathsLoader;
 using Project.Services.FileStreamer;
+using Project.Services.LineValidator;
 
 try
 {
@@ -20,6 +21,7 @@ try
     
     services.AddTransient<IFilePathsLoader, FilePathsLoader>();
     services.AddTransient<IFileStreamer, FileStreamer>();
+    services.AddTransient<ILineValidator, LineValidator>();
     services.AddSingleton<AppProcessor>();
     
     var serviceProvider = services.BuildServiceProvider();
